@@ -1,16 +1,16 @@
 # Aulos — VST3 / Standalone
 
 A polyphonic **physical-model wind-instrument synthesizer**, ported from the
-[CV funk](https://github.com/codygeary/CVfunk-Modules) *Aulos* VCV Rack module
+[CV funk](https://github.com/codygeary/CVfunk-Modules) *Aulos* [VCV Rack](https://vcvrack.com/) module
 (by Cody Geary) to a standalone **VST3** and **desktop app** using
 [JUCE](https://juce.com).
 
-> **About this port:** This port was done **entirely using an LLM** by
-> **duddex**, who does **not** claim to be a good (or even competent)
-> programmer — all credit for the instrument, its synthesis, and its sound
-> belongs to the original author, **Cody Geary / CV funk**. If you enjoy Aulos,
-> please consider supporting him by buying the **CV funk premium modules**:
-> <https://library.vcvrack.com/?page=1&limit=50&query=&tag=&sort=creationTimestamp&brand=CV%20funk&license=premium&modules=&plugins=>
+> **About this port:** This is an independent port of an original
+> [VCV Rack](https://vcvrack.com/) module, developed entirely with the
+> assistance of large language models by **duddex**. All credit for the
+> instrument — its synthesis, design, and sound — belongs to its creator,
+> **Cody Geary / CV funk**. If you enjoy Aulos, please support him by purchasing
+> the [CV funk premium modules](https://library.vcvrack.com/?page=1&limit=50&query=&tag=&sort=creationTimestamp&brand=CV%20funk&license=premium&modules=&plugins=).
 
 Aulos is built on a **bidirectional digital waveguide**: two traveling-wave
 rails run the length of a bore and reflect into one another at the embouchure
