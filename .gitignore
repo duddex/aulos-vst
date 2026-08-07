@@ -1,0 +1,11 @@
+# Build output
+build/
+*.exe
+*.obj
+*.o
+
+# Offline harness render
+*.wav
+
+# Downloaded tools (pluginval, etc.)
+tools/

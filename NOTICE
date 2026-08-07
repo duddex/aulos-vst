@@ -1,0 +1,35 @@
+Aulos VST3 / Standalone — third-party notices
+=============================================
+
+This project (the "Port") is licensed as a whole under the GNU Affero General
+Public License v3.0 (AGPLv3). See LICENSE for the full text.
+
+It combines the following components:
+
+1. Aulos synthesis engine
+   - Author:  Cody Geary / CV funk
+   - License: MIT (see licenses/Aulos-CVfunk-MIT.txt)
+   - Files:   dsp/AulosDSP.h, dsp/AulosEngine.h, dsp/AulosEngine.cpp
+   - The MIT-licensed engine is incorporated into this AGPLv3 project; MIT is
+     compatible with AGPLv3. All credit for the instrument, its synthesis, and
+     its sound belongs to Cody Geary. Original module:
+     https://github.com/codygeary/CVfunk-Modules
+
+2. JUCE framework
+   - Author:  Raw Material Software Limited
+   - License: used here under the AGPLv3 option of JUCE's dual license.
+     https://juce.com/legal/juce-8-licence/
+   - Because JUCE is used under AGPLv3, this Port is distributed under AGPLv3
+     and its complete corresponding source code is made available.
+
+3. VST3 SDK (bundled with JUCE)
+   - Author:  Steinberg Media Technologies GmbH
+   - "VST" is a trademark of Steinberg Media Technologies GmbH. The VST3 SDK is
+     distributed by Steinberg under its dual GPLv3 / Steinberg license; used
+     here under GPL-compatible terms. Steinberg's notices are retained.
+
+Distribution requirement (AGPLv3)
+---------------------------------
+Anyone who distributes this software (in source or binary form) must make the
+complete corresponding source code available to recipients under the AGPLv3,
+including this NOTICE and all license files.
