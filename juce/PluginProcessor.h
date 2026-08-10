@@ -77,6 +77,7 @@ private:
     bool     voiceGate[kMaxVoices] = {};
     bool     voiceSustained[kMaxVoices] = {};   // held by sustain pedal after note-off
     uint32_t voiceAge[kMaxVoices]  = {};
+    float    voiceVelocity[kMaxVoices] = {};   // 0..1, captured at note-on
     uint32_t ageCounter = 0;
     bool     sustainDown = false;
 
@@ -114,6 +115,7 @@ private:
     std::atomic<float>* pTrack        = nullptr;
     std::atomic<float>* pDrone        = nullptr;
     std::atomic<float>* pManualGate   = nullptr;
+    std::atomic<float>* pVelBreath    = nullptr;
 
     // Live MIDI modulation state (updated from CC / pitch-bend events).
     static constexpr float kBendRangeSemis = 2.f;

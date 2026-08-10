@@ -74,6 +74,7 @@ the finger (fingering) pitch, so notes normally play at their fundamental. The
 | **Breath** | 0–1 | Breath pressure — the driving force behind both exciters. At 0 the instrument is **silent** (not a static tone); past a light threshold it speaks and blooms over the attack. Higher = louder and pushes into overblow. **CC 2** and note velocity add to this. |
 | **Volume** | 0–1 | Output gain (0–3×). |
 | **Octave** | −2…+2 oct | Global transpose of pipe + finger pitch. |
+| **Vel→Brth** | 0–1 | How strongly note velocity scales breath. **0** = velocity ignored (every note at full breath); **1** = full response (soft ≈ 0.3× breath, hard = 1×). Automatable and applied live to held notes. |
 
 ### ARTICULATION
 | Control | Range | Description |
@@ -91,7 +92,7 @@ the finger (fingering) pitch, so notes normally play at their fundamental. The
 | MIDI | Effect |
 |---|---|
 | Note on/off | Voice on/off; note number sets pitch (note 60 = C4). |
-| Velocity | Per-voice breath scale (soft = airy/quiet, hard = full, more overblow). |
+| Velocity | Per-voice breath scale (soft = airy/quiet, hard = full, more overblow). Depth set by the **Vel→Brth** control. |
 | **CC 2** (breath) | Adds to the Breath parameter. |
 | **CC 1** (mod wheel) | Adds to Vibrato Depth. |
 | **CC 64** (sustain) | Holds released notes until the pedal lifts. |

@@ -77,6 +77,7 @@ APVTS::ParameterLayout AulosAudioProcessor::makeLayout() {
     add("breath",    "Breath",         0.f, 1.f, 0.7f);
     add("volume",    "Volume",         0.f, 1.f, 0.5f);
     add("octave",    "Octave",        -2.f, 2.f, 0.0f);
+    add("velBreath", "Velocity to Breath", 0.f, 1.f, 1.0f);
 
     // Resonator / envelope (was the context menu).
     add("wgGain",       "Waveguide Gain", 0.f,  1.75f, 1.4f);
@@ -118,6 +119,7 @@ AulosAudioProcessor::AulosAudioProcessor()
     pBreath    = apvts.getRawParameterValue("breath");
     pVolume    = apvts.getRawParameterValue("volume");
     pOctave    = apvts.getRawParameterValue("octave");
+    pVelBreath = apvts.getRawParameterValue("velBreath");
 
     pWgGain       = apvts.getRawParameterValue("wgGain");
     pDecay        = apvts.getRawParameterValue("decay");
@@ -168,8 +170,11 @@ void AulosAudioProcessor::handleNoteOn(int note, float velocity) {
     voiceSustained[slot] = false;
     voiceAge[slot]       = ++ageCounter;
 
-    // Velocity scales breath: soft keys speak airy and quiet, hard keys full.
-    engine.voiceBreathScale[slot] = 0.3f + 0.7f * velocity;
+    // Velocity scales breath, depth-weighted by the Velocity->Breath param:
+    // depth 0 ignores velocity (scale 1), depth 1 gives the full 0.3..1 range.
+    voiceVelocity[slot] = velocity;
+    const float velDepth = pVelBreath->load();
+    engine.voiceBreathScale[slot] = 1.f - 0.7f * velDepth * (1.f - velocity);
 
     const float voct = (note - 60) / 12.f;   // MIDI 60 = C4 = engine voct 0
     engine.fingerVoct[slot] = voct;
@@ -190,6 +195,7 @@ void AulosAudioProcessor::handleAllOff() {
         voiceSustained[v] = false;
         voiceNote[v]      = -1;
         voiceAge[v]       = 0;
+        voiceVelocity[v]  = 1.f;
     }
     ageCounter  = 0;
     sustainDown = false;
@@ -231,6 +237,12 @@ void AulosAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     engine.aulosTrack        = pTrack->load()      > 0.5f;
     engine.droneActive       = pDrone->load()      > 0.5f;
     engine.manualGateActive  = pManualGate->load() > 0.5f;
+
+    // Velocity->Breath depth, applied to every voice each block so it stays
+    // live/automatable for held notes.
+    const float velDepth = pVelBreath->load();
+    for (int v = 0; v < kMaxVoices; ++v)
+        engine.voiceBreathScale[v] = 1.f - 0.7f * velDepth * (1.f - voiceVelocity[v]);
 
     const float breathBase = pBreath->load();
     const float vibBase    = pVibDepth->load();

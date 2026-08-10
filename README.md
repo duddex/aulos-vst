@@ -34,7 +34,7 @@ changed (CV/gate → MIDI, panel → JUCE editor).
   - **CC 1** (mod wheel) → vibrato depth.
   - **Pitch bend** → ±2 semitones.
   - **CC 64** (sustain pedal) → holds notes.
-- **26 automatable parameters** (all state saved with the project).
+- **27 automatable parameters** (all state saved with the project).
 - Animated **pipe visualizer** — the two-tube standing-wave / bore / breath
   display from the original module, redrawn in JUCE.
 - **9 factory presets** (Flute, Recorder, Clarinet, Oboe, Brass, drones…).

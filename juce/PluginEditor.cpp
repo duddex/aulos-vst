@@ -35,7 +35,7 @@ namespace {
              {{"vibRate","Rate"},{"vibBreath","Breath"},{"vibDepth","Depth"}},
              juce::Colour::fromRGB(180, 140, 235)},
             {"MIX",
-             {{"breath","Breath"},{"volume","Volume"},{"octave","Octave"}},
+             {{"breath","Breath"},{"volume","Volume"},{"octave","Octave"},{"velBreath","Vel\u2192Brth"}},
              juce::Colour::fromRGB(235, 180, 90)},
         };
         return s;
