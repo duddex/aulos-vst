@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(Aulos VERSION 0.1.1 LANGUAGES C CXX)
+project(Aulos VERSION 0.1.2 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -14,9 +14,10 @@ FetchContent_Declare(JUCE
 FetchContent_MakeAvailable(JUCE)
 
 juce_add_plugin(Aulos
-    COMPANY_NAME               "CVfunk"
-    PLUGIN_MANUFACTURER_CODE   Cvfk
+    COMPANY_NAME               "duddex"
+    PLUGIN_MANUFACTURER_CODE   Ddex
     PLUGIN_CODE                Auls
+    DESCRIPTION                "Aulos - physical-model wind synth (engine by Cody Geary / CVfunk)"
     FORMATS                    VST3 Standalone
     IS_SYNTH                   TRUE
     NEEDS_MIDI_INPUT           TRUE
