@@ -13,11 +13,11 @@ jobs:
   windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # Cache the JUCE clone that FetchContent pulls, keyed on the pinned tag.
       - name: Cache JUCE sources
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: juce/build/_deps
           key: juce-deps-${{ hashFiles('juce/CMakeLists.txt') }}
@@ -49,7 +49,7 @@ jobs:
           "ASSET=$asset" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Aulos-Windows
           path: ${{ env.ASSET }}
